@@ -1,0 +1,22 @@
+\contentsline {chapter}{Introduction}{5}{chapter*.2}
+\contentsline {chapter}{Bill of rights and responsibilities}{7}{chapter*.3}
+\contentsline {chapter}{Official lab practices and policies}{9}{chapter*.4}
+\contentsline {subsection}{General procedure}{10}{subsection*.5}
+\contentsline {subsection}{Authorship guidelines}{10}{subsection*.6}
+\contentsline {subsection}{Attendance policy}{17}{subsection*.7}
+\contentsline {subsection}{Compensation and benefits}{19}{subsection*.8}
+\contentsline {subsection}{Interpersonal issues}{19}{subsection*.9}
+\contentsline {subsection}{Computers}{20}{subsection*.10}
+\contentsline {subsection}{Other research equipment}{20}{subsection*.11}
+\contentsline {subsection}{Travel policy}{21}{subsection*.12}
+\contentsline {subsection}{Summer funding}{21}{subsection*.13}
+\contentsline {subsection}{Making a poster}{22}{subsection*.14}
+\contentsline {subsection}{Poster printing}{22}{subsection*.15}
+\contentsline {subsection}{Publication costs}{23}{subsection*.16}
+\contentsline {chapter}{Ask a question, answer a question}{25}{chapter*.17}
+\contentsline {subsection}{Lab policy}{25}{subsection*.18}
+\contentsline {subsection}{Specific methods}{25}{subsection*.19}
+\contentsline {subsection}{Interpersonal issues}{25}{subsection*.20}
+\contentsline {chapter}{Checklist and signature page}{27}{chapter*.21}
+\contentsline {chapter}{Bibliography}{29}{chapter*.22}
+\contentsfinish 

@@ -1,0 +1,633 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Tufte-Style Book (Minimal Template)
+% LaTeX Template
+% Version 1.0 (5/1/13)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+% IMPORTANT NOTE:
+% In addition to running BibTeX to compile the reference list from the .bib
+% file, you will need to run MakeIndex to compile the index at the end of the
+% document.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass{tufte-book} % Use the tufte-book class which in turn
+ % uses the tufte-common class
+
+
+\usepackage{microtype} % Improves character and word spacing
+
+%\usepackage{lipsum} % Inserts dummy text
+
+\usepackage{booktabs} % Better horizontal rules in tables
+
+\usepackage{graphicx} % Needed to insert images into the document
+\graphicspath{{graphics/}} % Sets the default location of pictures
+\setkeys{Gin}{width=\linewidth,totalheight=\textheight,keepaspectratio}
+% Improves figure scaling
+
+\usepackage[export]{adjustbox}
+
+\usepackage{fancyvrb} % Allows customization of verbatim environments
+\fvset{fontsize=\normalsize} % The font size of all verbatim text can be changed here
+
+\newcommand{\hangp}[1]{\makebox[0pt][r]{(}#1\makebox[0pt][l]{)}} % New command to create parentheses around text in tables which take up no horizontal space - this improves column spacing
+\newcommand{\hangstar}{\makebox[0pt][l]{*}} % New command to create asterisks in tables which take up no horizontal space - this improves column spacing
+
+\usepackage{xspace} % Used for printing a trailing space better than
+ % using a tilde (~) using the \xspace command
+
+\usepackage{hyperref} %web links/URLs
+
+\definecolor{BNBL_blue}{RGB}{11, 80, 137}
+\definecolor{BNBL_green}{RGB}{55, 178, 158}
+
+\hypersetup{colorlinks=true,linkcolor=BNBL_blue} % Comment this line if you don't wish to have colored links
+\hypersetup{colorlinks=true,urlcolor=BNBL_green} % Comment this line if you don't wish to have colored links
+
+
+\usepackage{enumitem,amssymb}
+\newlist{todolist}{itemize}{2}
+\setlist[todolist]{label=$\square$}
+
+\newcommand{\monthyear}{\ifcase\month\or January\or February\or March\or April\or May\or June\or July\or August\or September\or October\or November\or December\fi,\space\number\year} % A command to print the current month and year
+
+\newcommand{\openepigraph}[2]{ % This block sets up a command for printing an epigraph with 2 arguments - the quote and the author
+\begin{fullwidth}
+\sffamily%\large
+\begin{doublespace}
+\noindent\allcaps{#1}\\ % The quote
+\noindent\allcaps{#2} % The author
+\end{doublespace}
+\end{fullwidth}
+}
+
+\newcommand{\ourschool}{Indiana University, Bloomington}
+
+\newcommand{\blankpage}{\newpage\hbox{}\thispagestyle{empty}\newpage} % Command to insert a blank page
+
+\usepackage{makeidx} % Used to generate the index
+\makeindex % Generate the index which is printed at the end of the document
+
+%----------------------------------------------------------------------------------------
+%BOOK META-INFORMATION
+%----------------------------------------------------------------------------------------
+
+\title{Lab Manual} % Title of the book
+
+\author{Richard F. Betzel, Ph.D.} % Author
+
+\publisher{Brain Networks \& Behavior Lab, \ourschool} % Publisher
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+\frontmatter
+
+%----------------------------------------------------------------------------------------
+%EPIGRAPH
+%----------------------------------------------------------------------------------------
+
+\thispagestyle{empty}
+%\openepigraph{Quotation 1}{Author, {\itshape Source}}
+%\vfill
+%\openepigraph{Quotation 2}{Author}
+%\vfill
+%\openepigraph{Quotation 3}{Author}
+
+%----------------------------------------------------------------------------------------
+
+\maketitle % Print the title page
+%----------------------------------------------------------------------------------------
+%COPYRIGHT PAGE
+%----------------------------------------------------------------------------------------
+
+\newpage
+\begin{fullwidth}
+~\vfill
+\thispagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{\baselineskip}
+
+\includegraphics[width=1.5in,left]{lab+logo/website+logo_1000dpi.png}\\\vspace{0.2in}
+
+Copyright \copyright\ \the\year\ \thanklessauthor
+
+\par\smallcaps{Published by the \thanklesspublisher}
+
+\par\smallcaps{\url{http://brainnetworkslab.com}}
+
+%\par License information.\index{license}
+
+\par\textit{Current as of \monthyear}
+\end{fullwidth}
+
+%----------------------------------------------------------------------------------------
+
+\setcounter{tocdepth}{1}
+\tableofcontents % Print the table of contents
+
+%----------------------------------------------------------------------------------------
+
+%\listoffigures % Print a list of figures
+
+%----------------------------------------------------------------------------------------
+
+%\listoftables % Print a list of tables
+
+%----------------------------------------------------------------------------------------
+%DEDICATION PAGE
+%----------------------------------------------------------------------------------------
+
+% \cleardoublepage
+% ~\vfill
+% \begin{doublespace}
+% \noindent\fontsize{18}{22}\selectfont\itshape
+% \nohyphenation
+% \end{doublespace}
+% \vfill
+% \vfill
+
+%----------------------------------------------------------------------------------------
+%INTRODUCTION
+%----------------------------------------------------------------------------------------
+
+\newcommand{\director}{Rick}
+\newcommand{\coordinator}{Rick}
+\newcommand{\labmeetingtime}{Fridays at 12:30pm}
+
+\cleardoublepage
+\chapter{Introduction}\label{ch:intro} % Adding an asterisk leaves out this chapter from the table of contents
+
+The aim of this lab manual is to introduce you to life in the Brain Networks \& Behavior Lab (BNBL) at Indiana University, Bloomington. It describes your rights and responsibilities as a member of the lab and introduces our philosophy and policies.
+
+%. The manual also introduces our general research approach and lab policies.
+
+\newthought{Who is this lab manual for?}
+%\noindent \marginnote{\texttt{TASK:}
+% Upon reading through this lab manual for the first time, please make at least one edit. You could correct a typo, clarify something that's unclear, add a comment, etc., and report this back to \director.}
+
+This lab manual is written with new lab members in mind and should be read in detail and in full. It will serve as a useful reference for clarifying lab policy in the future. Periodically throughout the document, you will see margin notes with listed \texttt{TASK} items. Completing your read through entails: (a) reading the contents of the manual, (b) asking current lab members about any confusing aspects, and (c) completing the relevant \texttt{TASK} items. You will also see non-task \texttt{NOTE} items; these provide helpful tips and additional commentary on the nearby text.
+
+\noindent As you read through this lab manual, you might have questions that aren't answered clearly or that are never covered at all. All lab members are welcome (and encouraged!) to submit edits that improve the content, clarity, and overall helpfulness of this document at any point throughout their tenure in the lab.
+
+\newthought{What should you do if you don't understand something?}\noindent\marginnote{\texttt{TASK:}If you haven't used \LaTeX~before (i.e.,
+ the document formatting language in which this manual is written), you'll want to \href{https://www.latex-project.org/get/}{download \LaTeX} and take a look at \href{https://www.latex-tutorial.com/tutorials/quick-start/}{this ``quick start'' tutorial}.} If you don't understand something you read in this manual, it is important that you \textit{ask another lab member for help}. Every member of the lab brings their own unique knowledge base, training, life experiences, and perspectives. Respecting and celebrating those differences drives the science we do. If you're new to the lab, new to coding, or working on an unfamiliar topic, you might feel like a newbie today---but chances are good that if you stick around for a bit someone else will be seeking your expert opinion before you know it. In addition to learning, there's another good reason for asking for help: if you don't understand something, there's a reasonable chance that you've discovered a mistake or a logical inconsistency! Finally, if you find yourself asking a question that no one else in the lab can answer, you should bring that question to \director.
+
+\newthought{Why is it worth my time to read through the manual?} Aside from pursuing your own curiosity, a major reason that you've
+decided to join an academic research lab is probably because you want to gain training or career-advancing experiences. This manual briefly
+summarizes the collective wisdom of past and present lab members in a way that we think will best allow you to achieve your objectives. \textit{Learn from it}, \textit{challenge it}, and \textit{add to it}.
+
+\newthought{What ``isn't'' this lab manual?}
+
+\noindent This lab manual is \textit{not} intended to provide a comprehensive overview of everything you need to know to do your research projects. As described next, you may not even \textit{know} what you need to know to do your projects! Nevertheless, you need somewhere to start, and this is that place.
+
+\marginnote{\texttt{TASK:} When you are done reading this manual and carrying out all required tasks, please fill out the signature page, sign it (electronically), and email a PDF (of just the signature page) to \href{mailto:rbetzel@indiana.edu}{rbetzel@indiana.edu}.
+
+\textbf{You are officially a lab member once you have completed all tasks in this manual and receipt of your signed and filled-out signature page and checklist has been acknowledged by \director.}}
+
+If you encounter an error or problem you don't know how to fix, try checking the \hyperref[ch:faq]{ask a question, answer a question} section, where we maintain a log of common problems and quick solutions. If you don't see a solution to your question there, consider adding the question so that you or someone else can add the answer for future lab members!
+
+We also maintain \href{https://www.brainnetworkslab.com/coderesources}{code from published lab papers} and \href{https://www.brainnetworkslab.com/internal}{short tutorials} that provide guidance on specific tasks. If you are looking for help on a particular task (or understanding a particular concept) that isn't covered by the existing set of tutorials, feel free to reach out to one of the senior lab members (graduate students to postdocs, undergraduates to graduate students). If you're still stuck, then you send Rick an email or stop by his office. It's also likely that other people have or will have a similar question in the future -- please consider contributing a tutorial of your own once you've figured things out!
+
+
+\chapter{Bill of rights and responsibilities}\label{ch:billofrights}
+\marginnote{\texttt{TASK:} Read
+ \href{https://www.sciencemag.org/careers/2018/11/what-can-we-learn-dartmouth}{this letter} about defining and characterizing boundaries between lab members and noticing unhealthy norms.} As a member of the Brain Networks \& Behavior Lab, you are entitled to certain rights, and you agree to take on certain responsibilities.
+
+\newthought{Your rights as a lab member}
+\begin{enumerate}
+\item You are entitled to a safe work environment free from harassment, abuse, violence, and discrimination in any form.
+ \item You are entitled to be supported and respected by all lab members.
+ \item You are entitled to openly share your scientific ideas and constructive feedback with all lab members.
+ \item You are entitled to appropriate credit (e.g.\ authorship, acknowledgement, letter of recommendation) for your work and ideas.
+\end{enumerate}
+
+\newthought{Your responsibilities as a lab member}
+\begin{enumerate}
+ \item You agree to contribute to a safe work environment and to refrain from behaviors that harass, abuse, expose to violence, or discriminate.
+ \item You agree to support and respect all lab members, including yourself.
+ \item You agree to openly share your scientific ideas and constructive feedback with other lab members.
+ \item You agree to clearly communicate and document your contributions to each research project (e.g.\ updates on Slack, lab presentations, etc.).
+ \item You agree to establish open lines of communication between yourself and other lab members, and to address concerns or issues promptly and
+ directly with the relevant parties (to the extent that you feel safe doing so).
+ \item You agree to carry out your work with integrity and diligence, adhering to the highest possible standards of scientific excellence.
+ \item You agree to utilize lab resources (including equipment, money, time, etc.) responsibly and sustainably.
+ \item You agree to maintain a clean workspace free from clutter, including both personal spaces (e.g.\ desks) and shared areas (coffee counter, printing stations, etc.).
+\end{enumerate}
+
+\newthought{Recourse}
+
+\noindent If you feel your rights as a lab member have been, or are in danger of being, violated, it is your duty to report those violations to a senior staff member (e.g.\ \director, Department Chair, Deans, police, Title IX coordinator, ombudsman, etc.). Similarly, if you notice others endangering others' rights, or neglecting their responsibilities, it is your duty to report those violations to a senior staff member.
+
+\chapter{Official lab practices and policies}\label{ch:policy}
+Our lab's practices and policies are intended to provide a framework for \textit{maximizing efficiency}. Achieving our peak efficiency as a lab means we are being as scientifically productive as possible, in terms of knowledge discovery (learning new stuff) and dissemination (papers, talks, conference presentations, publicly released datasets, software, etc.). It also means that our fellow lab members are achieving their training and career objectives. To achieve peak efficiency, we need to succeed on three fronts:
+
+\begin{itemize}
+
+\item \textbf{Communication.} We want to foster an environment where everyone feels comfortable contributing to the collective dialogue. Our lab meets regularly to discuss logistical (e.g. scheduling, financial,  sociological) and technical issues. We also use a variety of software packages to synchronize and facilitate communication within our lab and between our lab and the broader scientific community.
+
+\item \textbf{Resource allocation.} Our lab resources (e.g. equipment, time, money, attention) are finite. We want to foster an environment where lab resources are used as efficiently as possible to achieve our collective goals. We also want to foster sustainable use of resources by regularly pursuing research funding opportunities.
+
+\item \textbf{Adaptability.} The whole point of \textit{research} is that we don't already know the answers to the questions we're exploring or how to create the tools we're working on. That means that we won't necessarily be able to plan out everything in advance. We often need to be focused and efficient \textit{without knowing the end goal}!
+\end{itemize}
+Your job as a contributing lab member is to help us to achieve our collective peak efficiency (as a lab) while also maximizing your own training and career potential. 
+
+%\newthought{Doing research in the BNBL}
+%Research
+
+\newthought{Papers}
+
+\noindent Research papers are the primary research output of our lab. Publications are the ``currency of academia,'' in that they are central to career advancement. Exploration of new ideas and curiosity about things we don't understand are critical components of research and often lead to new insights that can eventually make their way into a paper. However, most our career goals require that we maintain a steady output of journal articles, conference proceedings, and pre-prints. With each allocation of lab resources (equipment, money, time) we should be asking ourselves how this contributes to a paper.
+
+\subsection{General procedure}
+All lab papers should be coordinated with \director. A paper starts with a discussion of:
+\begin{enumerate}
+\item What the paper is going to be about
+\item What the key results are
+\item What the overall ``story'' is
+\item The current status of various components of the project (e.g.\ data collection, analyses, figures, interpretation, literature review, etc.)
+\item Who is a potential candidate for authorship on the paper
+\end{enumerate}
+
+We draft papers in \LaTeX, either \emph{via} a shared directory on Dropbox or IU Box.
+
+When we write papers, we always use the same directory (folder) naming and organizational conventions. You can read more about this in the lab tutorials.
+
+\subsection{Authorship guidelines}
+\marginnote{\texttt{TASK:} review the \href{https://oir.nih.gov/sites/default/files/uploads/sourcebook/documents/ethical_conduct/guidelines-authorship_contributions.pdf}{NIH Guidelines for Authorship}.} The Brain Networks \& Behavior Lab follows the \href{https://oir.nih.gov/sites/default/files/uploads/sourcebook/documents/ethical_conduct/guidelines-authorship_contributions.pdf}{NIH Guidelines for Authorship} in considering whether your contribution to a project merits authorship on the paper. If you have made a non-trivial contribution to a project but did not meet the requirements for authorship, you will instead receive a citation in the acknowledgements section of the paper. In general, you likely meet the requirements for authorship if you contributed in any of the following ways:
+\begin{enumerate}
+\item Drafted the manuscript (this warrants first authorship)
+\item Came up with the idea or made other substantial intellectual contributions that meaningfully shaped the trajectory of the project
+\item Carried out an original experimental study (e.g.\ that you designed or implemented)
+\item Carried out non-trivial data analyses (e.g.\ more complicated than $t$-tests)
+\item Contributed novel tools or resources to the project that haven't been published yet
+\end{enumerate}
+
+\marginnote{\texttt{NOTE:} Conference posters and abstracts generally have substantially less stringent authorship requirements than formal papers. The general rule of thumb for posters is that all project team members should be co-authors.}
+
+\noindent You are unlikely to meet the requirements for authorship if your
+contributions were limited to the following:
+\begin{enumerate}
+ \item Running experimental participants for an already-designed and  coded-up study
+ \item Running trivial data analyses (e.g.\ $t$-tests or similar)
+ \item Getting trained by one of the other project members on a  project-related task
+ \item Training another project member on a project-related task
+ \item Sharing already-published tools or resources
+ \item Editing or commenting on a draft of the manuscript
+\end{enumerate}
+
+\noindent The final determination for who will be an author on each lab paper (and in what order) will be made by \director, following open discussions with project team members.
+
+\newthought{Making mistakes}
+
+\noindent The work we do is complicated, and mistakes happen. When you notice a mistake (a bug, misinterpretation, mislabeling, or any other error), it is critical that you report the mistake immediately. Whereas mistakes are unavoidable in science, negative impacts can be minimized by fostering a workplace where reporting mistakes is celebrated and accepted as part of the natural course of getting things done. Mistakes are opportunities to learn and grow, and identifying or noticing mistakes should be celebrated as part of our growth as scientists. However, real harm can come from failing to report mistakes soon enough. There is a proverb that says ``the best time to plant a tree was 20 years ago; the second best time is now.'' Analogously, the best time to identify and correct a mistake may have been in the past-- but the second best time is right now!
+
+~\\
+
+\noindent Example scenarios (not an exhaustive list):
+\begin{enumerate}
+ \item You've shared a figure, statistic, or other result, and  you've realized there's a bug in your code.
+ \item You tried to collect some data and the experiment crashed or  yielded corrupted data.
+ \item You're re-reading a paper that you shared, and you notice a mistake or typo.
+ \item You made a plan with your project team and you realized it's flawed in some way, or that there's potentially a better solution or approach.
+ \item You released a software package and you've found a bug or error.
+\end{enumerate}
+
+\noindent Appropriate actions for each of the above scenarios (this should happen immediately after you notice the mistake):
+\begin{enumerate}
+\item Double check, to the best of your ability, that the mistake is real. This may involve checking over code, rebooting a computer and restarting an experiment, re-reading reference text, etc.
+ \item Coordinate over Slack and email with your project team to formulate an action plan.
+\item Ask other lab members for help if the course of action isn't clear. Also try Google and/or Stack Exchange.
+ \item If the error originated in code provided by someone else, e.g. third parties on Github, you should reach out to the individuals who provided the code.
+\end{enumerate}
+
+\noindent \textit{If you think you might have caught a mistake but aren't
+ sure, consult with another lab member! It never hurts to be safe!}
+
+
+
+\newthought{Project roles}
+
+\noindent Every project has four possible roles. You will play one or more of these roles on your project:
+\begin{enumerate}
+\item \textbf{Project Owner.} This is the person responsible for maximizing ``return on investment'' of the project effort. The project owner:
+\begin{enumerate}
+\item Is responsible for project vision
+\item Constantly re-prioritizes the research backlog, adjusting any long-term expectations such as publication and release plans
+\item Acts as the final arbiter of requirements questions
+\item Accepts or rejects each project increment
+\item Decides whether to publish/ship the project
+\item Decides whether to continue development
+\item Considers interests of funding bodies (e.g. NIH, NSF, DARPA, private organizations) and the scientific community
+\item May contribute as a team member
+\item Has a leadership role
+\item Will usually be \director
+\end{enumerate}
+
+\item \textbf{Team Member.} Team members are responsible for carrying out the project work. Team members:
+\begin{enumerate}
+\item Are cross-functional: includes members with development skills (write code or papers/grants), testing skills (e.g.\ data collection, test software, proofread papers/grants), and/or domain expertise (e.g.\ knowledge or interest in a relevant research area)
+\item Are self-organizing and self-managing without externally assigned roles
+\item Negotiate commitments with the Project Owner, one ``sprint'' at a time
+\item Have autonomy regarding how to reach commitments
+\item Are intensely collaborative
+\item Are (ideally) located in one team room (usually this will be the lab)
+\item Are (ideally) committed to long-term, consistent lab membership
+\item Are (ideally) focused on a single team/project at a time
+\item Have a leadership role
+\end{enumerate}
+
+\item \textbf{Project Coordinator.} The Project Coordinator facilitates the agile research process both directly and indirectly. The Project Coordinator:
+\begin{enumerate}
+\item Helps to resolve impediments
+\item Creates an environment conducive to team self-organization
+\item Captures empirical data to adjust forecasts (e.g.\ weekly Slack reports summarizing progress)
+\item Shields the team from external interference and distraction to keep it ``in the zone''
+\item Enforces timelines
+\item Has no management authority over the team (anyone with authority over the team is by definition not its Project Coordinator)
+\item Has a leadership role
+\item Will usually be \director~unless a project has a coordinator has been hired to work on the project (this may be the case if data collection is involved)
+\end{enumerate}
+
+\item \textbf{Collaborator.} Collaborators are not formally part of the project team and generally will not attend regular meetings as part of the team. Collaborators do not have a leadership role in the project. They may carry out one or more of the following roles:
+\begin{enumerate}
+\item Provide data or share equipment
+\marginnote{\texttt{NOTE:} A project may never be held up by a collaborator. If the collaborator fails to provide a promised service, the project team must adapt. If the collaborator fails to meet a non-critical deadline, the project will proceed without that component of the project. Involvement as a collaborator is fluid.}
+\item Provide occasional consulting services
+\item Provide occasional feedback on project results
+\item Carry out minor analyses
+\item Proofread documents
+\item Help with administrative tasks such as scheduling
+\item Help with information technology tasks such as computer maintenance
+
+\end{enumerate}
+By definition, collaborators play a minor role in the project, and they are not responsible for managing any aspect of the project. They may become Team Members if their involvement increases. Generally collaborators will be included in a paper's acknowledgement section, but collaborators are not normally co-authors.
+
+Note: It is never appropriate to start a new collaboration outside of the Brain Networks and Behavior Lab without consulting with \director. This applies to collaborations involving researchers at other institutions but also at IU and even in our home departments. Collaborations take up time and energy that might be better spent on other projects or more important collaborations.
+\end{enumerate}
+
+
+\newthought{Meetings}
+
+\noindent Effective lab communication requires forums for communicating. As described below, we use \href{http://www.slack.com}{Slack} and the \href{bnbl-l-subscribe@list.indiana.edu}{lab listserv} to facilitate non-in-person communications, but Slack cannot replace in-person meetings. In fact, our approach is set up to encourage in-person interactions as often as possible---ideally several times a week for group projects. We'll have the following regularly scheduled meetings:
+
+\begin{enumerate}
+\item \textbf{Lab meeting.} We will have, as a lab, a regular weekly 1.5 hour meeting on \textbf{\labmeetingtime}. The precise format of this meeting varies from week to week according to lab needs and interests. \textbf{Attendees: all active lab members.}
+
+\item \textbf{Individual and project meetings.} You will meet individually with \director~on a weekly basis at an agreed upon time. If your project is collaborative and includes internal collaborators from within the lab or from other labs at IU, this meeting might involve many people. \textbf{Attendees: you plus all project team members and any other interested active lab members.}
+
+
+ \item \textbf{Beginning-of-term and end-of-term meetings.} At the start or end of each term, you should schedule a 15-30 minute meeting slot with \director~to discuss your research plans, progress, goals, etc. It is your responsibility to email \href{rbetzel@indiana.edu}{\director} to find a suitable date/time.
+ 
+ \item \textbf{Department talks and colloquia.} Almost every week the Department of \href{https://apps.iu.edu/ccl-prd/events/view?type=day&pubCalId=GRP1479}{Psychological and Brain Sciences} (or \href{http://cogs.indiana.edu/events/q733-colloquium.php}{Cognitive Science} or \href{https://neuroscience.indiana.edu/news-events/neuroscience-colloquium-series/index.html}{Program in Neuroscience}) invites internal and external researchers to present on a wide variety of research topics. You are encouraged to attend any that seem interesting. These talks take place on Mondays during the semester at 4:00 PM in PY101 (the big lecture hall on the first floor of the Psychology building).
+ 
+ Many labs and areas also conduct brown bag lunches and lab meetings on more specialized topics. Some of these events are weekly, like \href{http://cogs.indiana.edu/events/cognitive-lunch.php}{CogLunch}, while others are less frequent. If you are interested in learning about what other talks are available get in touch with \director~, who can then put you in contact with the faculty representative for these other meetings.
+ 
+ Additionally, \director~(along with \href{https://brainlife.github.io/plab/}{Franco Pestilli} and \href{https://stat.indiana.edu/about/faculty/core-faculty/mejia-amanda.html}{Amanda Mejia}) hosts a journal club that meets every two weeks to discuss new papers in cognitive neuroscience that deal with neuroimaging and is methods-focused. You can sign up for the journal club listserv by sending a \href{clubneuro-l-subscribe@list.indiana.edu}{blank email} to this address.
+ 
+ \textbf{Attendees: all interested lab and non-lab Indiana University community members.}
+
+\end{enumerate}
+
+%\newpage
+\newthought{Getting started in the lab}
+
+\noindent
+\marginnote{\texttt{TASK:} Create (free) Google, Slack, Dropbox, IU Box, and GitHub accounts. Send your addresses and/or usernames to \director~so that you can be added to the lab groups. Also send your preferred email address so that you can be added to the lab Slack account.}
+
+The very first thing you need to do is to get set up the following platforms, which will enable you to interact with the rest of the lab, download and use the lab's software packages, and
+accomplish various necessary administrative tasks:
+\begin{enumerate}
+
+\item \href{bnbl-l-subscribe@list.indiana.edu}{\textbf{Lab listserv}}. This is a lab email list that can be used in place of Slack to contact the entire lab at the same time. Send a blank email to this address to sign up automatically. You can also ask Rick to add you to the listserv.
+
+\item \href{https://uits.iu.edu/box}{\textbf{IU Box}}. This is a service provided by IU that allows us to store and share large datasets and files. For our purposes, it is the home of all processed lab data, example slides, job application materials, lab logos, and code.
+
+\item \href{https://bnbl.slack.com}{\textbf{Slack.}} This is where almost all not-in-person lab communications take place. It provides an interface for asking questions, storing notes, and sharing ideas.
+
+\item \href{https://www.dropbox.com}{\textbf{Dropbox}}. Dropbox is similar to IU Box, but is proprietary.
+
+\item \href{https://www.mathworks.com}{\textbf{Mathworks (MATLAB).}} IU offers free licenses to MATLAB, which is a computing language that (along with Python) we use to write analysis and visualization scripts. If you would like to install MATLAB on your own computer, follow the full set of instructions \href{https://kb.iu.edu/d/ajmh}{here}. If you want to use MATLAB on a lab computer and MATLAB is already installed for another user, follow those instructions up until step 2 (creating a Mathworks account with your IU username). If MATLAB is not already installed on your lab computer, you'll need to follow the complete installation instructions.
+
+\marginnote{\texttt{TASK:} Unless you have made prior arrangements with \director, all new lab members are expected to complete the \href{https://matlabacademy.mathworks.com}{MATLAB Onramp} -- a tutorial for teaching the basics of MATLAB.}
+
+\item \href{https://www.github.com}{\textbf{GitHub.}} This is used to manage all code, papers, grants, presentations, and posters. In other words, anything where it'd be useful to track multiple versions, anything that we might ultimately want to release to the public, and/or anything that multiple lab members will be collaborating on. Each project has one or more GitHub repositories. Our lab GitHub is located \href{https://github.com/brain-networks}{here}.
+ 
+
+\marginnote{\texttt{TASK:} If you've never used GitHub (Git) before, please work through these \href{https://try.github.io/}{GitHub Tutorials}. You may also find it useful to refer to this \href{https://github.com/brain-networks/lab-manual/tree/master/resources/git-cheatsheet.pdf}{Git cheatsheet} and this \href{https://github.com/brain-networks/lab-manual/tree/master/resources/workflow-of-version-control.pdf}{Git workflow} sheet when using Git/GitHub at first.} 
+ 
+
+\item \href{https://www.brainnetworkslab.com}{\textbf{Lab website.}} \marginnote{\texttt{TASK:} Submit a photograph (of yourself or some other picture or image that you want to represent you) and a 2-3 sentence biography to \director~so that you can be added to the \href{https://www.brainnetworkslab.com/people}{people page} on the lab website. Alternatively, if you do not wish to be included on the website, send a note to \director~expressing that you do not want to be added to the website.} We use the lab website to distribute research materials, describe ongoing work, and provide information about our work. There is also an \href{https://www.brainnetworkslab.com/internal}{internal} section of the lab website that includes code and project information for lab members that isn't shared with the rest of the world. This is password protected; contact \director~to get access.
+ 
+\item \href{https://kb.iu.edu/d/bdfy}{\textbf{Adobe Creative Suite.}} If you anticipate that you will need to make figures for a paper or create a poster, it is important that you install Adobe Creative Suite on your lab computer (you can do the same on your personal computer if you'd like). This is a software package for designing figures and artwork and is made freely available to all IU users. During the installation process you should only install Adobe Illustrator and Adobe Acrobat -- we will use these tools to polish and assemble figures generated in MATLAB and Python.
+ 
+\end{enumerate}
+
+Once you've created those accounts, you can ask any questions through Slack (use the \href{https://bnbl.slack.com/messages/general/}{\#general} channel or the channel specific your project) or \emph{via} the \href{bnbl-l-subscribe@list.indiana.edu}{listserv}. Depending on your role in the lab, you may be added on Slack as a single-channel guest (access to only one channel) or a full member (access to all lab channels). This generally depends on how long you've been in the lab and/or how many projects you are expecting to interface with. If you feel you don't have the appropriate account type, please communicate your concerns to \director. There are many redundancies built into these accounts. For instance, we use both Slack and email for communication and we use IU Box, Dropbox, and Github for version control and storing/sharing code and data.
+
+\newthought{Miscellaneous administrata}
+
+\noindent You can pick up a lab key (for A316) from the main office in PBS (\director~needs to be with you when you sign it out). At the end of your tenure in the lab, you need to return the key. If you are the last one in the lab for the day, \textbf{please be sure to lock the door when you leave}.
+
+
+ \subsection{Attendance policy}
+ In general, we expect full time paid employees to be in the lab during ``standard'' working hours---roughly between 9 AM and 5 PM. The precise range of hours you work is less important to us than putting in an effort to help form a cohesive lab culture where lab members can interact in person to share ideas, leverage expertise, solve problems, etc. Therefore, even if you end up deciding to shift your hours, we'd like you to make a strong effort to be physically present in the lab between 1 and 4 PM (prior arrangements notwithstanding; e.g. if you have a long commute and we've agreed that you won't come in every day, or if you need to occasionally schedule an appointment during the 1--4 PM window). Similarly, if you are a part time employee, we'd like you to try to put in your in-the-lab hours during the 1--4 PM time window as often as possible. (This is in addition to weekly lab meetings.)
+ 
+ If you are unpaid, e.g. a volunteer or undergraduate research assistant, it is also important that you make an effort to be in the lab daily between 1 and 4 PM. While you are unpaid and free to come and go as you please, the other people working on your project are investing their time and you should do the same. Being in the lab also exposes you to new topics and ideas \emph{via} general conversations. It also ensures that you make continuous progress on your research project outside of your weekly meetings with \director.
+
+The lab also abides by Indiana University's standard paid time off policies for benefits-eligible (full-time, non-student) employees. You can find the official policy \href{http://hr.iu.edu/benefits/pto_exempt.html}{here}. If you are a student employee, you are generally ineligible for paid time off (you can take time off, but you won't normally be paid for it).
+
+If you know that you'll be unable to meet any of these general attendance guidelines, please coordinate with \director~to make appropriate arrangements. \textbf{With the above in mind, we abide by a ``common sense'' attendance policy that relies on an honor system.}\marginnote{\texttt{TASK:} If you are a (paid) hourly employee, you'll need to track your hours using the \href{https://one.iu.edu/task/iu/maintain-timesheet}{Kuali Time} system. \director~can help get you set up with that system.} If you cannot attend a lab event or meeting, your privacy will be respected: you do not (generally speaking) need to provide a reason for your absence (although you are honor bound not to abuse this system!) but you are expected to responsibly manage your schedule so that you get your work done and minimize inconvenience to others to the extent possible. The one exception is that if you seem to be abusing this
+system (e.g.\ as determined by your project owner, project coordinator, or fellow team members), you may be asked to provide additional information (in a way that does not invade your privacy---and if you are worried that this policy is overly intrusive, please bring your concerns to \director). Here's the official lab attendance policy:
+\begin{itemize}
+\item It is your responsibility to provide notice, well in advance, to anyone your absence will affect (e.g. \director, people you're scheduled to meet with, etc.). The best way to do this is via email or Slack.
+\begin{itemize}
+\item You are responsible for accounting for your planned absences when we discuss project schedules and goals. If you agree to take on work or to meet a deadline, you're responsible for it until you make alternative plans with your team!
+\item Brief (one day) absences (excluding weekends, and lab-related absences) should be scheduled as far in advance as possible, but at
+least at the beginning of the week, emergencies notwithstanding.
+\item Prolonged (more than 1 day, excluding weekends and lab-related absences) planned absences should be scheduled at least 1 week in advance, and ideally 2 weeks in advance.
+\end{itemize}
+
+\item If you are feeling sick, \textit{do not come into the lab}. We can arrange virtual meetings (if you are feeling well enough) or re-schedule as needed. Your recovery, and the health and safety of the lab, are the top priorities.
+
+\item If you need to be out of the lab for an unexpected non-illness-related emergency, simply give as much notice and information as possible.
+
+\item You are expected to attend all lab meetings and other regularly scheduled meetings that are directly relevant to your work in the lab.
+
+\item If you are scheduled to present at a conference (i.e.\ you submit an abstract and the abstract is accepted as a talk or poster), you are expected to attend the conference to present your work. In the extremely rare event that an emergency situation arises that would prevent you from presenting as scheduled, you are expected to make alternative arrangements (e.g.\ by arranging for a co-author to present in your place).
+
+\item You are strongly encouraged (but never required) to attend relevant journal clubs, PBS talks, meetings and talks, thesis defenses, and other relevant lab and/or Indiana University-affiliated events. If you are overwhelmed with other work, have a conflicting meeting, are running an experimental participant, or are out of the lab for other reasons, you do not need to provide a reason for your absence (unless you're presenting or are otherwise playing a key role).
+\end{itemize}
+
+\subsection{Compensation and benefits}
+If you are a non-student full-time on-campus employee, it's likely that you're eligible for Indiana University benefits, such as medical insurance, dental insurance, life insurance, etc. You can read more about the comprehensive benefits package \href{http://hr.iu.edu/enroll/index.html}{here}.
+
+If you are a student employee, you may be paid or unpaid. In general, full-time student employees are paid and part-time student employees are unpaid until they have been a full-time employee for at least one term. Your precise level of compensation will depend on your position, how your work in the lab is funded, your prior research
+experience, etc. If you have comments, questions, or concerns about your compensation, please discuss them with \director.
+
+\subsection{Interpersonal issues}
+If you are experiencing an interpersonal issue with another lab member or community member and are having trouble resolving it on your own (or feel unsafe resolving it on your own), please seek out assistance from \director, your Project Owner, your Project Coordinator, or one of the Indiana University community resources described below as early as possible.
+
+All lab members, regardless of position or status, are protected by (and must abide by) Indiana University's human resources policies. This means behaving professionally and respectfully towards others (including, but not limited to, your fellow lab members). On (hopefully) rare occasions, despite your best efforts, you may find yourself in an interpersonal situation that you feel unable to resolve on your own. You have many resources at your disposal to help get you back on track. You can read more about these in the \hyperref[ch:faq]{ask a question, answer a question} section.
+
+
+\newthought{Lab resources}
+
+\noindent As with most academic research labs, we (sadly!) must conduct our research within a limited research budget. In practice, the  important thing is to communicate with \director~before you spend (or  commit to spending) lab funds. Generally, the lab's financial policy is the following: we will do whatever is possible to ensure you have the equipment and resources you \textit{need} to do your best work. If you can adequately justify an expense and sufficient funds are available, then we will spend what it takes to get the job done. If you cannot justify an expense, or if the lab does not have sufficient funds, then we will need to get creative by figuring out how to get the job done anyway on a seemingly too-small budget. Usually we'll find ourselves somewhere in the middle of this continuum, which will help us to stretch our limited budget as far as possible while not making ourselves crazy or losing too much productivity in the process.
+
+ \subsection{Computers}
+All lab members need a computer to get their work done. We generally prefer to use Macs, as this maximizes compatibility across lab members. Depending on your expected role in the lab and the specifics of your project, the lab may provide a computer to you, or you may be expected to use your personal computer to complete your work. Any equipment purchased by the lab, including personal computers, is the official property of the Brain Networks \& Behavior Lab and should be treated as such. All equipment must be returned to the lab when your association with the lab is complete.
+
+In addition to personal computers, IU maintains several research supercomputing clusters to which you can use by creating additional and specialized \href{https://kb.iu.edu/d/aczn#research}{computing accounts}. \href{https://kb.iu.edu/d/bezu}{Karst} is available to all IU affiliates, including undergraduates, whereas \href{https://kb.iu.edu/d/bcqt}{Big Red} is available to graduate students, postdocs, and faculty only. Lastly, IU offers free access to the \href{https://kb.iu.edu/d/apum}{REsearch Desktop (RED)} environment that you can treat like a remote desktop to run programs like MATLAB or to store and share data. This is particularly useful if you do not have immediate access to a computer in lab, do not have access to one of the clusters, and if you do not want to run computationally intensive programs on your personal computer.
+
+ \marginnote{\texttt{NOTE:} To obtain funding for a scientific conference, \textit{prior to submitting your abstract}, you must
+(a) briefly describe or discuss how attending the conference fits in with your goals and/or plans, (b) provide confirmation that you have applied for some form of external funding, and (c) provide an approximate travel budget, including all registration fees, tickets, meals, etc. Your budget should not include lab events (e.g.\ lab dinners), which are covered by a separate mechanism. Your budget must be approved by \director~prior to submitting an abstract in order for the lab to cover your expenses. (Your expenses will be covered up the agreed-upon amount, at which point you are responsible for making your travel plans accordingly, submitting receipts, etc.)}
+
+ \subsection{Other research equipment}
+ Many research projects require specialized research equipment (e.g. for neuroimaging using fMRI, EEG, TMS, etc.). Most of this research equipment is shared with other labs affiliated with PBS or DHMC. All equipment should be treated with care and respect. Any malfunctions should be reported immediately. You should only be using this equipment if you have completed the appropriate safety training course and if you are listed as study personnel on the appropved IRB documents. Otherwise, you shoudl never operate this equipment.
+
+ \subsection{Travel policy}
+
+A major component of doing scientific research is communicating with other scientists. The Brain Networks \& Behavior Lab regularly presents at several international scientific conferences. If you are presenting your work from the lab (i.e., you are the presenting author for a talk or poster), then your travel expenses and conference registration fees will be guaranteed by the lab, \textit{under the assumption that you will also make reasonable efforts to seek out alternative sources of travel funding} (e.g.\ through PBS, other internal Indiana University sources, applying for travel awards, using personal grants like NRSAs or NSF fellowships, etc.). You are also expected to keep costs low (e.g.\ fly economy class, seek out cheaper tickets, stay in reasonably priced hotels, share accommodations with other lab members, etc.). By the same token, we also want to be cognizant of your comfort and time, and it is not always necessary to use the cheapest option. More specific travel guidelines will be given on a per-conference or per-trip basis.
+
+If you are not presenting your work (or if you're presenting non-lab work), but you are a senior lab member, then the lab may cover your travel expenses to a limited number of conferences each year. These should be discussed on a case-by-case basis with \director.
+
+\marginnote{\texttt{NOTE:} Because most conferences are far away, we use air travel to get there and back. However, in terms of C02 production per passenger, a typical flight is equivalent to driving a fuel-efficient car to/from work every day \textbf{for an entire year}, making air travel extremely costly in terms of its environmental impact and its contribution to atmospheric carbon levels. In the Brain Networks and Behavior Lab, we try to mitigate this damage by purchasing carbon offsets for all travel: here is \href{https://www.atmosfair.de/en/}{one example} and \href{https://offset.climateneutralnow.org}{here is another}. These offsets, which are inexpensive, support projects and programs aimed at removing, reducing, or avoiding greenhouse gases in the atmosphere and will be purchased as long as funds are available.}
+
+
+If you are a junior lab member not presenting your work, the lab will generally not pay for you to attend conferences. However, if you are interested in attending a conference, and you aren't able to secure funding through non-lab sources, you should discuss your options with \director. \textbf{All travel to and from conferences must be approved by \director. If it is not approved, it will not be reimbursed.} If your travel has been approved, you must submit a pre-travel form (located outside of the business office in PY325). Departmental administrators will then input this form into the travel system. Upon returning from the conference, you'll fill out a second form and return receipts.
+
+\subsection{Summer funding}
+\begin{enumerate}
+\item \textbf{Undergraduates:} It may be possible for the Brain Networks and Behavior Lab to fund you fully or partially during the summer (this depends upon the current lab budget). However, \director~will not consider this possibility until you have dilligently explored other options for summer funding, either externally or through IU directly. If you are applying for summer funding, you \director~must approve your application and help coordinate it. Many funding programs have deadlines in March or April, so it is critical to begin inquiring about summer funding far in advance of the end of the semester. Below is a list of some options for summer funding. Note that there are likely other opportunities available -- if you are aware of any opportunity not already included on this list, please contact \director.
+
+\begin{enumerate}
+\item \href{https://hutton.indiana.edu/funding/index.html}{Hutton Honor's College}.
+\item \href{https://college.indiana.edu/research/undergraduate-research/stars/index.html}{IU STARS Program}.
+\item \href{https://engagedlearning.indiana.edu}{IU Engaged Learning}.
+\item \href{https://undergradresearch.indiana.edu/index.html}{Undergraduate Research}.
+\item \href{https://nsa.indiana.edu}{National scholarships and awards, e.g. Fulbrights, Rhodes, etc.}.
+\item \href{http://www.stem.indiana.edu}{IU Minority Serving Institutions -- STEM}.
+\item \href{http://www.indiana.edu/~groups/stem/index.html}{Groups Scholars Program STEM Initiative}.
+\end{enumerate}
+
+\item \textbf{Graduate students:} In addition to your 10-month appointment, your admission letter may have indicated that the Brain Networks and Behavior Lab will offer summer funding as well (check your letter for the precise amount). If this is not the case, you may be eligible to TA a course during the summer or to apply for funding from one or another training grant (even if you are not being supported by the grant during the semesters). There are also opportunities to pursue external funding in the form of scholarships or fellowships to support you during the summer and possibly during the semester, as well.
+
+\item \textbf{Postdocs:} It is likely that your appointment guarantees 12 months of support.
+\end{enumerate}
+
+ \subsection{Making a poster}
+ \marginnote{\texttt{NOTE:} If you commit to presenting a poster at a  scientific conference, you agree to prepare a complete draft of  your poster \textit{at least two weeks in advance} of the conference, and to complete a final draft of your poster (that incorporates feedback from \director) \textit{at least one week in advance} of the conference. If you do not meet these deadlines, you may be required to withdraw your submission and/or cover any conference-related expenses that you incurred, at \director's discretion.} The preferred methods for creating posters are to use \href{https://github.com/deselaers/latex-beamerposter}{LaTeX BeamerPoster} or Adobe Illustrator (the Beamer approach is probably only appropriate if you are \emph{very} comfortable with LaTeX). The lab has several example poster templates on file. Your best bet is to ask \director~for an old poster and modify it. You can also create a file from scratch. Ensure that any images are either vector graphics, or bitmaps (.png, .jpeg, .tiff, etc.) at sufficiently high resolutions (at least 300 dpi).
+
+
+ \subsection{Poster printing}
+ \marginnote{\texttt{NOTE:} Be sure to coordinate with \director~regarding the funding source covering your poster printing cost prior to going to print your poster.}
+You can print posters on the 4th floor of Wells Library. You will need to add money on your IU poster printing account (this is separate from your normal printing account). This money will be reimbursed by the Brain Networks \& Behavior Lab. More information may be found \href{https://libraries.indiana.edu/computing-and-printing}{here}. It is important to schedule your printing time as far in advance as possible, particularly before conferences when many people will want to print. Advanced planning can help us avoid the additional costs associated with off-campus printers. 
+
+
+ \subsection{Publication costs}
+All costs related to lab publications will be fully covered by the lab. \director~can help facilitate these payments.
+
+\chapter{Ask a question, answer a question}\label{ch:faq}
+
+\subsection{Lab policy}
+\begin{itemize}
+\item If you have a question about the lab's policies, first try to find the answer in the \href{https://github.com/brain-networks/lab-manual/tree/master/lab_manual.pdf}{Lab Manual}.
+
+\item If you feel your question is not adequately answered in the Lab Manual, post your question on Slack (or, if it's a private issue, talk to \director).
+
+\item If you think your question is likely to be of general interest, please let \director~know and he can update the lab manual to reflect the answer.
+\end{itemize}
+
+\subsection{Specific methods}
+\begin{itemize}
+\item If you have questions about specific methods related to a project, ask a senior lab member working on the project.
+
+\item It may also be helpful to check the \href{https://www.brainnetworkslab.com}{lab website} and contact the author(s) or contributors of a related tutorial.
+
+\item You can also post your question in the \href{https://bnbl.slack.com/messages/methods/}{\#methods} channel on Slack.
+
+\item Remember, \href{https://www.google.com/}{Google} and \href{https://stackoverflow.com/}{Stack Overflow} are your friends! Often other people have encountered (and solved!) similar problems, and sometimes they even share the answers online!
+
+\item If you still cannot find an answer to your question, talk to \director.
+\end{itemize}
+
+\subsection{Interpersonal issues}\label{sec:interpersonal}
+\begin{itemize}
+\item Clear, direct communication is often the best way to address interpersonal issues. However, if you are having trouble resolving something (or feel uncomfortable doing so on your own) you should reach out to one of the following resources:
+
+\item Senior lab members (e.g. your immediate supervisor)
+
+\item \director
+
+\item The \href{https://psych.indiana.edu/directory/faculty/hetrick-william-p.html}{PBS department chair}
+
+\item The \href{https://studentaffairs.indiana.edu/dean-students/}{Undergraduate Deans Office} or the \href{https://graduate.indiana.edu/about/staff/index.html}{Graduate School's Deans Office}
+
+\item Indiana University's \href{http://hr.iu.edu/welcome/contact.htm}{Office of Human Resources}
+
+\item Indiana University's \href{https://one.iu.edu/task/iu/iueap}{Faculty/Employee Assistance Program}
+
+\item Indiana University's \href{https://equity.iu.edu}{Office of Institutional Equity} (for concerns about sexual misconduct, harassment, or assault)
+
+\item \href{https://iupd.indiana.edu}{IU Police Department} (if criminal activity is involved)
+\end{itemize}
+
+ \chapter{Checklist and signature page}
+ By signing below, I certify that I have completed the following tasks:
+\begin{todolist}
+ \item I have created a GitHub account and have been added to the appropriate lab
+ GitHub group(s). If I am unfamiliar with Git, I have gone through the GitHub tutorials.
+ \item I am proficient in \LaTeX, allowing me to edit and understand this lab manual's source code.
+ \item I have submitted one or more edits to the lab manual by making a pull request to the \href{https://github.com/brain-networks}{GitHub repository}.
+ \item I have added or commented on at least one issue on the lab manual's \href{https://github.com/brain-networks/lab-manual/issues}{GitHub issues page}.
+ \item I have joined the lab's Slack account and agree to check it regularly (at least once per normal business day, excluding weekends.
+ \item I have created a Mathworks account, completed the MATLAB onramp course, and will send a digital copy (PDF) of the certificate to \href{mailto:rbetzel@indiana.edu}{rbetzel@indiana.edu}. 
+ \item I am an unpaid or non-salaried employee, or I am an hourly employee and have gotten myself set up on Kuali Time to track my paid hours.
+ \item I have submitted a photograph (of myself, or a representative scene or object) along with a brief (2-3 sentence), professionally worded biography, to be included on the lab website. Alternatively, I have coordinated with \director~to indicate my preference to not be included on the lab website.
+ \item I agree to regularly attend lab meetings (unless I have a course conflict and have informed \director~).
+ \item I agree to set up a beginning-of-term or end-of-term meeting with \director~at least once per term.
+ \item I have read \href{https://www.sciencemag.org/careers/2018/11/what-can-we-learn-Indiana University}{Leah Somerville's commentary} on speaking out in toxic or abusive environments.
+ \item I have reviewed the \href{https://oir.nih.gov/sites/default/files/uploads/sourcebook/documents/ethical_conduct/guidelines-authorship_contributions.pdf}{NIH
+ guidelines for authorship}.
+ \item I agree to abide by the lab's bill of rights and responsibilities, and to follow official lab practices and policies.
+ \item I have carefully read through the entire lab manual, and I have checked off all of the above items to indicate that I have carried out the indicated tasks.
+ \item I will send a digital copy (PDF) of the final two pages of this manual, including checked-off list items, my digital signature, and today's date, to \href{mailto:rbetzel@indiana.edu}{rbetzel@indiana.edu}.
+\end{todolist}
+
+\vspace{1in}
+\begin{tabular}{@{}p{3in}p{1in}@{}}
+\hrulefill & \hrulefill \\
+Signature & Date\\
+\end{tabular}
+
+
+
+
+%----------------------------------------------------------------------------------------
+
+\backmatter
+
+%----------------------------------------------------------------------------------------
+%BIBLIOGRAPHY
+%----------------------------------------------------------------------------------------
+
+\bibliography{bibliography} % Use the bibliography.bib file for the bibliography
+\bibliographystyle{plainnat} % Use the plainnat style of referencing
+
+%----------------------------------------------------------------------------------------
+
+\printindex % Print the index at the very end of the document
+
+\end{document}
